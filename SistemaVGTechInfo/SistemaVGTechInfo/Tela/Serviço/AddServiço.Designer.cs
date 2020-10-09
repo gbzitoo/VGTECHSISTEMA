@@ -34,6 +34,11 @@
             this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialRaisedButton2 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.text_deletar = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.data_db = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.equipamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.data_db)).BeginInit();
             this.SuspendLayout();
             // 
             // Text_nomeservico
@@ -110,12 +115,54 @@
             this.text_deletar.TabIndex = 3;
             this.text_deletar.UseSystemPasswordChar = false;
             // 
+            // data_db
+            // 
+            this.data_db.AllowUserToDeleteRows = false;
+            this.data_db.BackgroundColor = System.Drawing.Color.White;
+            this.data_db.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_db.ColumnHeadersVisible = false;
+            this.data_db.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.nome,
+            this.equipamento});
+            this.data_db.Location = new System.Drawing.Point(162, 456);
+            this.data_db.Name = "data_db";
+            this.data_db.ReadOnly = true;
+            this.data_db.RowHeadersWidth = 4;
+            this.data_db.Size = new System.Drawing.Size(746, 208);
+            this.data_db.TabIndex = 6;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "VGTI_IDSERVICOS";
+            this.ID.HeaderText = "id";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 275;
+            // 
+            // nome
+            // 
+            this.nome.DataPropertyName = "VGTI_NOMEDOSERVICOS";
+            this.nome.HeaderText = "nome";
+            this.nome.Name = "nome";
+            this.nome.ReadOnly = true;
+            this.nome.Width = 335;
+            // 
+            // equipamento
+            // 
+            this.equipamento.DataPropertyName = "VGTI_PRECO";
+            this.equipamento.HeaderText = "equipamento";
+            this.equipamento.Name = "equipamento";
+            this.equipamento.ReadOnly = true;
+            this.equipamento.Width = 130;
+            // 
             // AddServiço
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1088, 696);
+            this.Controls.Add(this.data_db);
             this.Controls.Add(this.materialRaisedButton2);
             this.Controls.Add(this.text_deletar);
             this.Controls.Add(this.materialRaisedButton1);
@@ -123,6 +170,8 @@
             this.Controls.Add(this.Text_nomeservico);
             this.Name = "AddServiço";
             this.Text = "AddServiço";
+            this.Load += new System.EventHandler(this.AddServiço_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.data_db)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -134,5 +183,9 @@
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton2;
         private MaterialSkin.Controls.MaterialSingleLineTextField text_deletar;
+        private System.Windows.Forms.DataGridView data_db;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn equipamento;
     }
 }

@@ -104,8 +104,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Funcao\fecharChamado.cs" />
     <Compile Include="Funcao\InserirAtendimento.cs" />
     <Compile Include="Funcao\InserirServico.cs" />
+    <Compile Include="Funcao\mostrarChamados.cs" />
     <Compile Include="Tela\Atendimento\AddAtendimento.cs">
       <SubType>Form</SubType>
     </Compile>

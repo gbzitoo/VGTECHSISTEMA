@@ -1,4 +1,7 @@
-﻿using SistemaVGTechInfo.Tela.Atendimento;
+﻿using MySql.Data.MySqlClient;
+using SistemaVGTechInfo.Connection;
+using SistemaVGTechInfo.Funcao;
+using SistemaVGTechInfo.Tela.Atendimento;
 using SistemaVGTechInfo.Tela.Fechados;
 using SistemaVGTechInfo.Tela.Inicio;
 using SistemaVGTechInfo.Tela.Serviço;
@@ -20,6 +23,26 @@ namespace SistemaVGTechInfo
         public Form _objServiço = new Form();
         public Form _objInicio = new Form();
         public Form _objFechados = new Form();
+
+        private MySqlDataAdapter mAdapter;
+        private DataSet mDataSet;
+        Conexao cn = new Conexao();
+
+        public void mostraAbertos()
+        {
+            mDataSet = new DataSet();
+
+
+            //cria um adapter utilizando a instrução SQL para aceder à tabela
+            mAdapter = new MySqlDataAdapter("select VGTI_IDATENDIMENTO, VGTI_NOME, VGTI_EQUIPAMENTO, VGTI_SERVICO,VGTI_PRECO FROM atendimentos_vgti ORDER BY VGTI_IDATENDIMENTO", cn.Conn());
+
+            //preenche o dataset através do adapter
+            mAdapter.Fill(mDataSet, "atendimentos_vgti");
+
+            //atribui o resultado à propriedade DataSource da dataGridView
+            data_db.DataSource = mDataSet;
+            data_db.DataMember = "atendimentos_vgti";
+        }
         public Form2()
         {
             InitializeComponent();
@@ -28,7 +51,7 @@ namespace SistemaVGTechInfo
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
+            mostraAbertos();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -196,6 +219,25 @@ namespace SistemaVGTechInfo
             _objAtendimento.Close();
             _objServiço.Close();
             _objInicio.Close();
+        }
+
+        private void data_db_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void materialRaisedButton2_Click_1(object sender, EventArgs e)
+        {
+            fecharChamado chamados = new fecharChamado();
+            chamados.chamadoFechado(int.Parse(text_cod.Text));
+            chamados.ExcluindoChamadoAberto(int.Parse(text_cod.Text));
+
+            mostraAbertos();
+        }
+
+        private void p_AreaLogado_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

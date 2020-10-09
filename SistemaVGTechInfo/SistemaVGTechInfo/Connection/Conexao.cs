@@ -48,6 +48,15 @@ namespace SistemaVGTechInfo.Connection
         {
             return "INSERT INTO atendimentos_vgti(VGTI_NOME,VGTI_EQUIPAMENTO,VGTI_SERVICO,VGTI_PRECO) VALUES (@nome,@equipamento,@servico2,@preco)";
         }
+       
+        public string ConsultaFecharChamado()
+        {
+            return "insert into vgti_system.atendimentosfechados_vgti select VGTI_IDATENDIMENTO,VGTI_NOME,VGTI_EQUIPAMENTO,VGTI_SERVICO,VGTI_PRECO from atendimentos_vgti where VGTI_IDATENDIMENTO=@codigoChamado";
+        }
 
+        public string ConsultaExcluirChamado()
+        {
+            return "delete from atendimentos_vgti where VGTI_IDATENDIMENTO=@codigo";
+        }
     }
 }
