@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.txtUsuario = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtSenha = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
@@ -138,6 +139,7 @@
             this.Controls.Add(this.materialCheckBox1);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.txtUsuario);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Controle de Chamado";
             this.Load += new System.EventHandler(this.Form1_Load);
