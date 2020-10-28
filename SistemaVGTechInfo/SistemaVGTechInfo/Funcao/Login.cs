@@ -34,7 +34,7 @@ namespace SistemaVGTechInfo.Funcao
                 sqlcon.Open();
                 MySqlDataReader dr = comando.ExecuteReader();
 
-
+                Console.WriteLine();
                 dr.Read();
 
                 LoginBanco = Convert.ToString(dr["VGTI_USUARIO"]);
